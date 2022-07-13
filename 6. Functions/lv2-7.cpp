@@ -25,6 +25,53 @@ bool isLeap(int n){
     
 }
 
+int dayOfMonth(int month, int year){
+    switch(month){
+            case 1:
+                return 31;
+                break;
+            case 2:
+                if(isLeap(year)){
+                    return 29;                    
+                }else{
+                    return 28;
+                }
+                break;            
+            case 3:
+                return 31;
+                break;
+            case 4:
+                return 30;
+                break;
+            case 5:
+                return 31;
+                break;
+            case 6:
+                return 30;
+                break;
+            case 7:
+                return 31;
+                break;
+            case 8:
+                return 31;
+                break;
+            case 9:
+                return 30;
+                break;
+            case 10:
+                return 31;
+                break;
+            case 11:
+                return 30;
+                break;
+            case 12:
+                return 31;
+                break;
+            default:
+                return 0;
+                break;
+        }
+}
 date solve(date d1, date d2){
     date result;
     result.year = d2.year - d1.year;
@@ -38,51 +85,7 @@ date solve(date d1, date d2){
     if(d2.day < d1.day){
         result.month --;
         int days;
-        switch(d2.month){
-            case 1:
-                days = 31;
-                break;
-            case 2:
-                if(isLeap(d2.year)){
-                    days = 29;                    
-                }else{
-                    days = 28;
-                }
-                break;            
-            case 3:
-                days = 31;
-                break;
-            case 4:
-                days = 30;
-                break;
-            case 5:
-                days = 31;
-                break;
-            case 6:
-                days = 30;
-                break;
-            case 7:
-                days = 31;
-                break;
-            case 8:
-                days = 31;
-                break;
-            case 9:
-                days = 30;
-                break;
-            case 10:
-                days = 31;
-                break;
-            case 11:
-                days = 30;
-                break;
-            case 12:
-                days = 31;
-                break;
-            default:
-                days = 30;
-                break;
-        }
+        days = dayOfMonth(d2.month,d2.year);
         result.day = d2.day + days - d1.day;
     }else{
         result.day = d2.day - d1.day;
